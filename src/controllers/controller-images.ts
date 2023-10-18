@@ -32,13 +32,13 @@ export const countImagesHours = async (req: Request, res:Response) => {
         res.json(result);
 
     } catch (error) {
-        console.log(error)
         res.status(500).json({ error: 'Error en el servidor.' });
     }
 }
 
 export const searchImagesDate = async (req: Request, res: Response) => {
     try {
+
         const { startDate, endDate } = req.params;
 
         const initSecund = convertionDateSecond(startDate);

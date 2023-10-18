@@ -1,5 +1,15 @@
 version: '1'
 services:
+  nodejs-express:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mongo
+    links:
+      - mongo
   mongo:
     image: mongo
     ports:

@@ -2,7 +2,7 @@ import { Router } from "express";
 
 import { countImagesHours, searchImagesDate, viewImages } from "../controllers/controller-images";
 import { isNotDate } from "../middelwares/validation-date";
-import { validate } from "uuid";
+import { validation } from "../middelwares/validation";
 
 const router = Router();
 
@@ -10,7 +10,7 @@ router.get('/:nameFile', viewImages);
 
 router.get('/search/:startDate/:endDate', [
     isNotDate,
-    validate,
+    validation,
 ], searchImagesDate,)
 
 router.get('/group/hours', countImagesHours)
