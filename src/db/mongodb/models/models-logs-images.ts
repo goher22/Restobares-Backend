@@ -3,8 +3,8 @@ import ILogsImages from "../../../interfaces/iLogsImages";
 
 const logsImagesSchema = new Schema<ILogsImages>({
     date: {
-        type: Date,
-        required: [true, 'La fecha es obligatorio']
+        type: Number,
+        required: [true, 'La fecha es obligatorio'],
     },
     nameUser: {
         type: String,
@@ -15,5 +15,9 @@ const logsImagesSchema = new Schema<ILogsImages>({
         required: [true, 'Lua url de la imagen es obligatorio'],
     }
 });
+
+logsImagesSchema.methods.getDateAsDate = function () {
+    return new Date(this.date);
+};
 
 module.exports = model<ILogsImages>('LogImage', logsImagesSchema)

@@ -33,8 +33,10 @@ export const postLogsImages = async (req: Request, res: Response) => {
 
         await deleteFile(`temp.${extension}`);
 
+        const fechaActualSegundos = new Date().getTime();
+
         const logImage = new LogImage({
-            date: new Date(),
+            date: fechaActualSegundos,
             nameUser,
             urlImage: `${process.env.PORT ?? 'http://localhost:8000'}/api/images/${nameFile}`,
         });
@@ -47,7 +49,6 @@ export const postLogsImages = async (req: Request, res: Response) => {
         });
 
     }catch(msg){
-        console.log(msg)
         res
             .status(500)
             .json({err:msg});

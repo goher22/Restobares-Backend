@@ -1,5 +1,5 @@
 export default interface ILogsImages {
-    date: Date,
+    date: number,
     nameUser: string,
     urlImage: string
 }
