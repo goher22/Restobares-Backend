@@ -16,4 +16,4 @@ const logsImagesSchema = new Schema<ILogsImages>({
     }
 });
 
-module.exports = model('LogImage', logsImagesSchema)
+module.exports = model<ILogsImages>('LogImage', logsImagesSchema)

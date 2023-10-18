@@ -1,13 +1,17 @@
 import express, {Application} from 'express'
 import cors from "cors";
+import fileUpload from "express-fileupload";
 import { dbConnection } from '../db/mongodb/connection-mongo';
 import logsImagesRoute from '../routes/routes-logs-images';
+import imagesRoute from '../routes/router-images';
+
 
 class Serve {
     private app: Application;
     private port: string;
     private apiPaths = {
-        logsImages: '/api/logsimages'
+        logsImages: '/api/logsimages',
+        images: '/api/images'
     }
 
     constructor(){
@@ -21,6 +25,7 @@ class Serve {
 
     routers(){
         this.app.use(this.apiPaths.logsImages,  logsImagesRoute);
+        this.app.use(this.apiPaths.images, imagesRoute)
     }
 
     async conectiondb() {
@@ -38,6 +43,11 @@ class Serve {
         this.app.use(express.json());
 
         this.app.use(express.static('public'));
+
+        this.app.use(fileUpload({
+            useTempFiles : true,
+            tempFileDir : '/tmp/'
+        }));
     }
 
     listen() {

@@ -1,5 +1,5 @@
 import {config} from "dotenv"
-import Serve from "./models/serve";
+import Serve from "./models/serve"
 
 config();
 
