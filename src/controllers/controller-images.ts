@@ -16,7 +16,7 @@ export const countImagesHours = async (req: Request, res:Response) => {
                             format: "%Y-%m-%d %H",
                             date: {
                                 $toDate: {
-                                  $add: ['$date', 5 * 60 * 60 * 1000] // Sumar 5 horas en milisegundos para ajustar a GMT-5
+                                  $add: ['$date', 5 * 60 * 60 * 1000]
                                 }
                             }
                         },
