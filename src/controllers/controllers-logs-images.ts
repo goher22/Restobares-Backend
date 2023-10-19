@@ -38,7 +38,7 @@ export const postLogsImages = async (req: Request, res: Response) => {
         const logImage = new LogImage({
             date: fechaActualSegundos,
             nameUser,
-            urlImage: `${process.env.PORT ?? 'http://localhost:8000'}/api/images/${nameFile}`,
+            urlImage: `${process.env.PORT ?? 'http://localhost:8080'}/api/images/${nameFile}`,
         });
 
         await logImage.save();
